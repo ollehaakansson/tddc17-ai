@@ -21,7 +21,7 @@
     - UCS
         - 
     - Iterative Deepening Search
-        - 
+        - Complete if branching factor is finite and optimal when the path cost is a non-decreasing function of the depth of the node
     - Bidirectionnal Search
         - 
     - Greedy Best-First Search
