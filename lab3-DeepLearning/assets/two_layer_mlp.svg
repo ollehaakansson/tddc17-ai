@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">Two layer fully connected neural network</title>
+  <desc id="desc">Four input neurons are fully connected to three hidden neurons, which are fully connected to two output neurons.</desc>
+  <rect width="100%" height="100%" fill="#fff"/>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; fill: #111827; }
+    .heading { font-size: 22px; font-weight: 700; }
+    .label { font-size: 20px; font-weight: 600; }
+    .note { font-size: 17px; fill: #374151; font-style: italic; }
+    .edge { stroke: #94a3b8; stroke-width: 1.5; opacity: 0.55; }
+    .input { fill: #dbeafe; stroke: #60a5fa; stroke-width: 2; }
+    .hidden { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+    .output { fill: #d1fae5; stroke: #34d399; stroke-width: 2; }
+    .card { filter: drop-shadow(0 2px 3px rgba(15, 23, 42, 0.14)); }
+  </style>
+
+  <text class="heading" x="130" y="55" text-anchor="middle">input</text>
+  <text class="heading" x="500" y="55" text-anchor="middle">hidden</text>
+  <text class="heading" x="830" y="55" text-anchor="middle">output</text>
+
+  <line class="edge" x1="166" y1="110" x2="464" y2="130"/>
+  <line class="edge" x1="166" y1="110" x2="464" y2="250"/>
+  <line class="edge" x1="166" y1="110" x2="464" y2="370"/>
+  <line class="edge" x1="166" y1="210" x2="464" y2="130"/>
+  <line class="edge" x1="166" y1="210" x2="464" y2="250"/>
+  <line class="edge" x1="166" y1="210" x2="464" y2="370"/>
+  <line class="edge" x1="166" y1="310" x2="464" y2="130"/>
+  <line class="edge" x1="166" y1="310" x2="464" y2="250"/>
+  <line class="edge" x1="166" y1="310" x2="464" y2="370"/>
+  <line class="edge" x1="166" y1="410" x2="464" y2="130"/>
+  <line class="edge" x1="166" y1="410" x2="464" y2="250"/>
+  <line class="edge" x1="166" y1="410" x2="464" y2="370"/>
+
+  <line class="edge" x1="536" y1="130" x2="794" y2="190"/>
+  <line class="edge" x1="536" y1="130" x2="794" y2="310"/>
+  <line class="edge" x1="536" y1="250" x2="794" y2="190"/>
+  <line class="edge" x1="536" y1="250" x2="794" y2="310"/>
+  <line class="edge" x1="536" y1="370" x2="794" y2="190"/>
+  <line class="edge" x1="536" y1="370" x2="794" y2="310"/>
+
+  <g class="card">
+    <circle class="input" cx="130" cy="110" r="36"/>
+    <circle class="input" cx="130" cy="210" r="36"/>
+    <circle class="input" cx="130" cy="310" r="36"/>
+    <circle class="input" cx="130" cy="410" r="36"/>
+  </g>
+  <text class="label" x="130" y="117" text-anchor="middle">x<tspan baseline-shift="sub" font-size="13">1</tspan></text>
+  <text class="label" x="130" y="217" text-anchor="middle">x<tspan baseline-shift="sub" font-size="13">2</tspan></text>
+  <text class="label" x="130" y="317" text-anchor="middle">x<tspan baseline-shift="sub" font-size="13">3</tspan></text>
+  <text class="label" x="130" y="417" text-anchor="middle">x<tspan baseline-shift="sub" font-size="13">4</tspan></text>
+
+  <g class="card">
+    <circle class="hidden" cx="500" cy="130" r="36"/>
+    <circle class="hidden" cx="500" cy="250" r="36"/>
+    <circle class="hidden" cx="500" cy="370" r="36"/>
+  </g>
+  <text class="label" x="500" y="137" text-anchor="middle">h<tspan baseline-shift="sub" font-size="13">1</tspan></text>
+  <text class="label" x="500" y="257" text-anchor="middle">h<tspan baseline-shift="sub" font-size="13">2</tspan></text>
+  <text class="label" x="500" y="377" text-anchor="middle">h<tspan baseline-shift="sub" font-size="13">3</tspan></text>
+
+  <g class="card">
+    <circle class="output" cx="830" cy="190" r="36"/>
+    <circle class="output" cx="830" cy="310" r="36"/>
+  </g>
+  <text class="label" x="830" y="197" text-anchor="middle">y<tspan baseline-shift="sub" font-size="13">1</tspan></text>
+  <text class="label" x="830" y="317" text-anchor="middle">y<tspan baseline-shift="sub" font-size="13">2</tspan></text>
+
+  <text class="note" x="315" y="470" text-anchor="middle">Linear + ReLU</text>
+  <text class="note" x="665" y="470" text-anchor="middle">Linear</text>
+</svg>
