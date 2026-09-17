@@ -24,8 +24,18 @@ class State:
 
     @property
     def score(self) -> int:
-        # TODO: Complete this method
-        return 0
+        store_difference = self.pits[PLAYER_0_STORE] - self.pits[PLAYER_1_STORE]
+        side_difference = (sum(self.pits[:PLAYER_0_STORE])
+                           - sum(self.pits[PLAYER_0_STORE + 1:PLAYER_1_STORE]))
+
+        winner = self.check_victory()
+        if winner is not None:
+            if winner == -1:
+                return 0
+            win_value = 3 * sum(self.pits)
+            return win_value + store_difference if winner == 0 else -win_value + store_difference
+
+        return 2 * store_difference + side_difference
 
     def next_state(self, pit):
         """
