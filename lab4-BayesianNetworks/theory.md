@@ -120,3 +120,10 @@ It goes from P(Survival) = 99,001% to 99,505%
 Since a Bayesian network can represent any function in propositional logic, it can also represent computationally difficult problems such as SAT. Therefore, exact inference in a general Bayesian network is computationally hard. Deciding certain probability questions is NP-hard, while calculating exact probabilities is generally #P-hard. The required computation can therefore grow exponentially as the network becomes larger and more connected.
 
 An alternative is approximate inference, where probabilities are estimated instead of calculated exactly. Examples include Monte Carlo sampling, rejection sampling, likelihood weighting and MCMC methods such as Gibbs sampling. Exact inference can also remain practical if the network has a simple structure, such as a tree or a network with low treewidth.
+
+## The owner had an idea that instead of employing a safety person, to replace the pump with a better one. Is it possible, in your model, to compensate for the lack of Mr H.S.'s expertise with a better pump?
+
+The pump will only reduce the probebility of pump failure. This would lower the risk of meltdown, hence increasing the chances of survival which could be better the H.S. depending on how competent he is. However, it will not affect the water leak probebility which means only the pump will not eliminate the risk och meltdown altogether. 
+
+## Mr H.S. fell asleep on one of the plant's couches. When he wakes up he hears someone scream: "There is one or more warning signals beeping in your control room!". Mr H.S. realizes that he does not have time to fix the error before it is to late (we can assume that he wasn't in the control room at all). What is the chance of survival for Mr H.S. if he has a car with the same properties as the owner? Hint: This question involves a disjunction (A or B) which can not be answered by querying the network as is. How could you answer such questions? Maybe something could be added or modified in the network.
+
