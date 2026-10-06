@@ -6,9 +6,20 @@ class StateAndReward:
         """State discretization function for the angle controller."""
 
         # Exercise 1a: Discretize the angle and return a unique state.
+        #============== Implementation ====================
+        if angle < -0.4:
+            state = "hard_left"
+        elif angle < -0.1:
+            state = "slight_left"
+        elif angle <= 0.1:
+            state = "upright"
+        elif angle <= 0.4:
+            state = "slight_right"
+        else:
+            state = "hard_right"
 
-        state = "angle-state-not-implemented"
-
+        print(state)
+        #==================================================
         return state
 
     @staticmethod
@@ -16,9 +27,10 @@ class StateAndReward:
         """Reward function for the angle controller."""
 
         # Exercise 1b: Return a reward that favors an upright rocket.
-
-        reward = 0
-
+        #============== Implementation ====================
+        reward = max(0.0, 10.0 - 30.0 * abs(angle)) # Max point is 10 | 10/30 ≈ 0.33, so if angle is bigger than 0.33 rad points recived is 0
+        print(reward)
+        #==================================================
         return reward
 
     @staticmethod

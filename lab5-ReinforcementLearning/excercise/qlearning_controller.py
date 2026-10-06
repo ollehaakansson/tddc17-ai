@@ -85,8 +85,20 @@ class QLearningController:
 
         # Exercise 2: Map every action number to an engine activation pattern.
         # Explicitly switch off every engine that the action does not use.
-        self.reset_rockets()
-
+        #self.reset_rockets()
+        #============== Implementation ====================
+        self.left_engine.setBursting(False)
+        self.middle_engine.setBursting(False)
+        self.right_engine.setBursting(False)
+        if action == 0:
+            pass  
+        elif action == 1:
+            pass #self.middle_engine.setBursting(True)
+        elif action == 2:
+            self.left_engine.setBursting(True)
+        elif action == 3:
+            self.right_engine.setBursting(True)
+        #===================================================
     def tick(self, current_time):
         """Main decision loop. Called every iteration by the simulator."""
         self.iteration += 1
@@ -94,6 +106,10 @@ class QLearningController:
         if self.paused:
             return
 
+        #============== Implementation ====================
+        #if(self.vy.getValue() > 10):
+            #self.middle_engine.setBursting(True)
+        #==================================================
         # Exercise 4: Change these angle functions to the hover functions after
         # the angle controller works.
         new_state = StateAndReward.get_state_angle(
@@ -135,6 +151,14 @@ class QLearningController:
             # Exercise 3: Implement the Q-learning update here. Use
             # previous_reward, alpha(), GAMMA_DISCOUNT_FACTOR, and
             # get_max_action_q_value().
+            #============== Implementation ====================
+            old_q = self.qtable[prev_stateaction]
+            max_next_q = self.get_max_action_q_value(new_state)
+            alpha_val = self.alpha(self.ntable[prev_stateaction])
+
+            # Q-learning formula: Q(s,a) <- Q(s,a) + alpha * (r + gamma * max-Q(s',a') - Q(s,a))
+            self.qtable[prev_stateaction] = old_q + alpha_val * (previous_reward + self.GAMMA_DISCOUNT_FACTOR * max_next_q - old_q)
+            #==================================================
 
             action = self.select_action(new_state)
             self.perform_action(action)
