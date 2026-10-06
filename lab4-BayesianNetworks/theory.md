@@ -127,3 +127,65 @@ The pump will only reduce the probebility of pump failure. This would lower the 
 
 ## Mr H.S. fell asleep on one of the plant's couches. When he wakes up he hears someone scream: "There is one or more warning signals beeping in your control room!". Mr H.S. realizes that he does not have time to fix the error before it is to late (we can assume that he wasn't in the control room at all). What is the chance of survival for Mr H.S. if he has a car with the same properties as the owner? Hint: This question involves a disjunction (A or B) which can not be answered by querying the network as is. How could you answer such questions? Maybe something could be added or modified in the network.
 
+The statement "one or more warning signals" means:
+
+WaterLeakWarning=True OR PumpFailureWarning=True
+
+To represent this disjunction, we can add a Boolean node called AnyWarning with WaterLeakWarning and PumpFailureWarning as parents. AnyWarning is deterministic and has the following probability table:
+
+P(AnyWarning=T | WaterLeakWarning=T, PumpFailureWarning=T) = 1
+
+P(AnyWarning=T | WaterLeakWarning=T, PumpFailureWarning=F) = 1
+
+P(AnyWarning=T | WaterLeakWarning=F, PumpFailureWarning=T) = 1
+
+P(AnyWarning=T | WaterLeakWarning=F, PumpFailureWarning=F) = 0
+
+For this scenario we use the following observations:
+
+AnyWarning=True
+
+IsAsleep=True
+
+HomerReacs=Slow
+
+BicycleWorks=False
+
+HomerReacs is set to Slow because he was asleep and realizes that he reacted too late. BicycleWorks is set to False because Mr H.S. is only given a car, not a bicycle.
+
+Let E represent the observations IsAsleep=True, HomerReacs=Slow and BicycleWorks=False. The disjunction contains three possible and mutually exclusive warning combinations:
+
+(WaterLeakWarning=T, PumpFailureWarning=T)
+(WaterLeakWarning=T, PumpFailureWarning=F)
+(WaterLeakWarning=F, PumpFailureWarning=T)
+
+The probabilities calculated from our network for these cases are:
+
+P(WLW=T, PFW=T, E) = 0.000921138750
+
+P(Survives=T, WLW=T, PFW=T, E) = 0.000837605043
+
+P(WLW=T, PFW=F, E) = 0.005902111250
+
+P(Survives=T, WLW=T, PFW=F, E) = 0.005645968891
+
+P(WLW=F, PFW=T, E) = 0.005693861250
+
+P(Survives=T, WLW=F, PFW=T, E) = 0.005335221707
+
+We add the three valid warning cases and normalize the result:
+
+P(Survives=T | AnyWarning=T, E) = (0.000837605043 + 0.005645968891 + 0.005335221707) / (0.000921138750 + 0.005902111250 + 0.005693861250)
+= 0.011818795641 / 0.012517111250 = 0.94421112 ≈ 94.421%
+
+Therefore, the probability that Mr H.S. survives in this scenario is approximately 94.421%. Adding the AnyWarning node allows the same result to be obtained directly in the applet by observing AnyWarning=True and querying Survives.
+
+## What unrealistic assumptions do you make when creating a Bayesian Network model of a person? 
+
+The model assumes that a person's behaviour can be described using a small number of fixed states and probabilities. In reality, a person's reaction depends on many factors that are not included, such as stress, health, experience, communication and the exact situation. The model also assumes that the probabilities remain constant over time and that variables are conditionally independent whenever there is no connection between them in the network. A real person may learn, change behaviour and react differently in situations that appear identical in the model.
+
+## Describe how you would model a more dynamic world where for example the "IcyWeather" is more likely to be true the next day if it was true the day before. You only have to consider a limited sequence of days. 
+
+We could use a Dynamic Bayesian Network by creating one copy of the relevant variables for each day. For example, we could create IcyWeather_1, IcyWeather_2 and IcyWeather_3 and add arcs from IcyWeather_1 to IcyWeather_2 and from IcyWeather_2 to IcyWeather_3.
+
+The first day would use a prior probability P(IcyWeather_1). The following days would use a transition table such as P(IcyWeather_t | IcyWeather_t-1), where the probability of icy weather is higher if the previous day was icy. The remaining plant variables could also be copied for each day and connected to the IcyWeather variable from the same day. Since only a limited sequence is required, the network can be unrolled for a fixed number of days.
