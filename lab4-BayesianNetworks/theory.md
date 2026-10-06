@@ -147,11 +147,11 @@ AnyWarning=True
 
 IsAsleep=True
 
-HomerReacs=Slow
+HomerReacts=Slow
 
 BicycleWorks=False
 
-HomerReacs is set to Slow because he was asleep and realizes that he reacted too late. BicycleWorks is set to False because Mr H.S. is only given a car, not a bicycle.
+HomerReacts is set to Slow because he was asleep and realizes that he reacted too late. BicycleWorks is set to False because Mr H.S. is only given a car, not a bicycle.
 
 Let E represent the observations IsAsleep=True, HomerReacs=Slow and BicycleWorks=False. The disjunction contains three possible and mutually exclusive warning combinations:
 

@@ -1,0 +1,23 @@
+[project]
+name = "tddc17-rocket-rl"
+version = "0.1.0"
+description = "Python rocket reinforcement learning lab"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "numpy>=1.26,<2",
+  "pygame-ce>=2.5,<3",
+  "torch==2.2.2",
+]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", marker = "platform_system != 'Darwin'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv]
+package = false
