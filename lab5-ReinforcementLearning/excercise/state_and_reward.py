@@ -18,7 +18,7 @@ class StateAndReward:
         else:
             state = "hard_right"
 
-        print(state)
+        #print(state)
         #==================================================
         return state
 
@@ -29,7 +29,7 @@ class StateAndReward:
         # Exercise 1b: Return a reward that favors an upright rocket.
         #============== Implementation ====================
         reward = max(0.0, 10.0 - 30.0 * abs(angle)) # Max point is 10 | 10/30 ≈ 0.33, so if angle is bigger than 0.33 rad points recived is 0
-        print(reward)
+        #print(reward)
         #==================================================
         return reward
 
