@@ -38,21 +38,27 @@ class StateAndReward:
         """State discretization function for the full hover controller."""
 
         # Exercise 4a: Build a state from angle, vx, and vy.
+        #============== Implementation ====================
+        angle_bin = StateAndReward.discretize(angle, 5, -0.4, 0.4)
 
-        state = "hover-state-not-implemented"
+        vx_bin = StateAndReward.discretize(vx, 3, -15, 15.0)
 
-        return state
+        vy_bin = StateAndReward.discretize(vy, 5, -10.0, 10.0)
 
+        return f"a{angle_bin}_x{vx_bin}_y{vy_bin}"
+        #==================================================
     @staticmethod
     def get_reward_hover(angle, vx, vy):
         """Reward function for the full hover controller."""
 
         # Exercise 4b: Return a reward for hovering.
+        #============== Implementation ====================
+        r_angle = max(0.0, 10.0 - 30.0 * abs(angle))
+        r_vx = max(0.0, 8.0 - 2.0 * abs(vx))
+        r_vy = max(0.0, 8.0 - 0.7 * abs(vy))
 
-        reward = 0
-
-        return reward
-
+        return r_angle + r_vx + r_vy
+        #==================================================
     @staticmethod
     def discretize(value, nr_values, min_value, max_value):
         """Uniform discretization with explicit underflow and overflow bins.

@@ -93,7 +93,7 @@ class QLearningController:
         if action == 0:
             pass  
         elif action == 1:
-            pass #self.middle_engine.setBursting(True)
+            self.middle_engine.setBursting(True)
         elif action == 2:
             self.left_engine.setBursting(True)
         elif action == 3:
@@ -112,7 +112,7 @@ class QLearningController:
         #==================================================
         # Exercise 4: Change these angle functions to the hover functions after
         # the angle controller works.
-        new_state = StateAndReward.get_state_angle(
+        new_state = StateAndReward.get_state_hover(
             self.angle.getValue(),
             self.vx.getValue(),
             self.vy.getValue(),
@@ -127,7 +127,7 @@ class QLearningController:
         ):
             return
 
-        previous_reward = StateAndReward.get_reward_angle(
+        previous_reward = StateAndReward.get_reward_hover(
             self.previous_angle,
             self.previous_vx,
             self.previous_vy,
